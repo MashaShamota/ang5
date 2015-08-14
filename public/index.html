@@ -1,0 +1,55 @@
+<html ng-app="Task8">
+<head>
+    <title>Notes app</title>
+    <script src="js/angular.min.js"></script>
+    <script src="js/angular-drag-and-drop-lists.js"></script>
+    <script src="js/angular-route.min.js"></script>
+    <script src="routes/routes.js"></script>
+    <script src="routes/notes/notes.js"></script>
+    <script src="routes/viewSection/viewSection.js"></script>
+    <script src="routes/userForm/userForm.js"></script>
+    <script src="routes/login/loginController.js"></script>
+    <script src="routes/login/userService.js"></script>
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+</head>
+<body>
+
+<nav class="navbar navbar-inverse navbar-fixed-top">
+
+    <div class="container">
+        <div class="navbar-header">
+            <div class="navbar-brand">Notes tutorial app</div>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse" ng-controller="LoginController">
+            <form class="navbar-form navbar-right" name="userForm" novalidate ng-submit="login()" ng-show="!loggedIn">
+                <div class="form-group">
+                    <input type="text" name="username" ng-model="username" placeholder="Username" class="form-control">
+                </div>
+                <div class="form-group">
+                    <input type="password" name="password" ng-model="password" placeholder="Password" class="form-control">
+                </div>
+                <button type="submit" class="btn btn-success" >Sign in</button>
+                <a class="btn btn-primary" ng-href="#/register">Register</a>
+            </form>
+            <div ng-show="wrongPassword" style="color:white">Wrong username or password </div>
+        </div><!--/.navbar-collapse -->
+    </div>
+</nav>
+
+<div class="jumbotron">
+    <div class="container">
+        <h2>
+            <span class="glyphicon glyphicon-edit"></span>
+            Keep your notes in order
+        </h2>
+        <p>
+            A simple application to keep your own notes in order.
+        </p>
+    </div>
+</div>
+
+<div class="container ng-view">
+
+</div>
+</body>
+</html>

@@ -1,0 +1,57 @@
+<div class="panel panel-primary">
+    <div class="panel-heading">User registration form</div>
+    <div class="panel-body">
+        <form class="css-form" name="userForm" novalidate ng-submit="submitForm()">
+            <div class="form-group">
+                <label for="userName">User Name</label>
+                <input ng-minlength="3" required unique-user ng-model="user.userName" type="text" class="form-control" id="userName" name="userName" placeholder="Username">
+                <span ng-show="userForm.userName.$error.minlength">
+                    Must be > 3 chars
+                </span>
+                <span ng-show="userForm.userName.$error.unique">
+                    Username is not valid!
+                </span>
+            </div>
+            <div class="form-group">
+                <label for="dateOfBirth">Date of birth</label>
+                <input ng-model="user.dateOfBirth" type="text" class="form-control" id="dateOfBirth" name="dateOfBirth" placeholder="dd.mm.yyyy"
+                       ng-pattern="/^[0-9][0-9]\.[0-1][0-9]\.[1-2][0-9][0-9][0-9]$/">
+                <span ng-show="userForm.dateOfBirth.$error.pattern">
+                    Date of birth should be in format dd.mm.yyyy
+                </span>
+
+            </div>
+            <div class="form-group">
+                <div class="checkbox">
+                    <label><input type="checkbox"
+                                  ng-model="user.subscribe">
+                        Subscribe for newsletters
+                    </label>
+                </div>
+            </div>
+            <div class="form-group" ng-show="user.subscribe">
+                <label for="email">Email</label>
+                <input ng-model="user.email" type="email" class="form-control" id="email" name="email" placeholder="Email">
+            </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input required ng-model="user.password" type="password" class="form-control" id="password" name="password" placeholder="Password">
+            </div>
+            <div class="form-group">
+                <label for="password2">Repeat Password</label>
+                <input required match-to="user.password" ng-model="user.password2" type="password" class="form-control" id="password2" name="password2" placeholder="Repeat your password">
+
+                <span ng-show="userForm.password2.$touched && userForm.password2.$error.matchTo">
+                    Passwords should match
+                </span>
+
+            </div>
+
+
+            <button type="submit"
+                    ng-disabled="userForm.$invalid"
+
+                    class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+</div>
