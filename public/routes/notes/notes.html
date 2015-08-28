@@ -17,7 +17,7 @@
             <div class="panel-heading">Notes</div>
 
             <ul class="list-group" ng-repeat="note in notes">
-                <li class="list-group-item">{{note.text}} | {{note.date|date:'HH:mm dd.MM.yy'}}</li>
+                <li class="list-group-item">{{note.text}} | {{note.date|date:'HH:mm dd.MM.yy'}} <button class="btn" type="button" ng-click="remove({{note.__id}})">Remove</button></li>
             </ul>
         </div>
 

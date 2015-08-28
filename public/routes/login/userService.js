@@ -1,27 +1,25 @@
 /**
  * Created by user on 05.08.2015.
  */
-app.factory("UserService", function($http, $rootScope, $timeout) {
+app.factory("UserService", function($http, $q) {
     var service = {};
     service.userName = "";
     service.loggedIn = false;
 
     service.login = function(login, password) {
+        var deferred = $q.defer();
         $http.post("/login", {login:login, password:password})
             .success(function(res) {
                 if (res) {
-                    service.loggedIn = true;
                     service.userName = login;
+                    deferred.resolve("Logged in");
 
-                    console.log("logged in!");
                 } else {
-                    console.log("wrong user/password!");
-                    $rootScope.wrongPassword = true;
-                    $timeout(function() {
-                        $rootScope.wrongPassword = false;
-                    }, 1000);
+                    deferred.reject("wrong user/password!");
                 }
+
             });
+        return deferred.promise;
     }
 
     return service;

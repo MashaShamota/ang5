@@ -9,6 +9,7 @@ app.controller('NotesController', function ($scope, $http, $routeParams,$locatio
         var params = {params:{section:$scope.activeSection}};
         $http.get("/notes",params)
             .success(function (notes) {
+                console.log(notes);
                 $scope.notes = notes;
 
             });

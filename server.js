@@ -118,4 +118,11 @@ app.post("/login", function(req,res){
 });
 
 
+
+function setUser(req, query) {
+    var userName = req.session.userName || "demo";
+    query.userName = userName;
+    return query;
+}
+
 app.listen(3000);

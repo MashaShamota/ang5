@@ -31,8 +31,10 @@
                 <button type="submit" class="btn btn-success" >Sign in</button>
                 <a class="btn btn-primary" ng-href="#/register">Register</a>
             </form>
+            <p class="navbar-form navbar-right" ng-show="loggedIn" style="color:white">Good day to DIE, {{userName}} </p>
             <div ng-show="wrongPassword" style="color:white">Wrong username or password </div>
         </div><!--/.navbar-collapse -->
+
     </div>
 </nav>
 
